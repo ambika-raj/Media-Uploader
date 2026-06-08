@@ -239,7 +239,7 @@ function animateProgress() {
     width += 10;
     progressBar.style.width = width + "%";
     progressBar.textContent = width + "%";
-  }, 300);
+  }, 200);
 }
 
 // ─────────────────────────────────────────────
