@@ -95,8 +95,9 @@ curl -X POST http://localhost:5000/api/upload \
 
 ## 🌍 Deployment
 
-### Backend → [[Render]([https://render.com](https://media-uploader-imby.onrender.com))](https://media-uploader-imby.onrender.com)
+### Backend → https://media-uploader-imby.onrender.com
 
+### Backend → https://media-uploader21.netlify.app/
 
 ---
 
