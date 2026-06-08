@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Uploader</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="container">
+
+      <!-- ── HEADER ── -->
+      <h1>📁 Media Uploader</h1>
+      <p class="subtitle">Upload any file — images, videos, PDFs & more</p>
+
+      <!-- ── UPLOAD CARD ── -->
+      <div class="upload-card">
+
+        <!-- Drag & Drop Zone -->
+        <div class="drop-zone" id="dropZone">
+          <span class="drop-icon">☁️</span>
+          <p>Drag & drop your file here</p>
+          <span>or</span>
+          <!-- Hidden real file input -->
+          <input type="file" id="fileInput" hidden />
+          <!-- Button triggers the hidden input -->
+          <button class="btn-browse" onclick="document.getElementById('fileInput').click()">
+            Browse File
+          </button>
+          <!-- Shows selected filename -->
+          <p class="selected-file" id="selectedFileName">No file selected</p>
+        </div>
+
+        <!-- Upload Button -->
+        <button class="btn-upload" id="uploadBtn">Upload File</button>
+
+        <!-- Progress Bar (hidden until upload starts) -->
+        <div class="progress-wrap" id="progressWrap" style="display:none">
+          <div class="progress-bar" id="progressBar">0%</div>
+        </div>
+
+        <!-- Status Message -->
+        <p class="status-msg" id="statusMsg"></p>
+
+      </div>
+
+      <!-- ── UPLOADED FILES GALLERY ── -->
+      <div class="gallery-section">
+        <h2>📂 Uploaded Files</h2>
+        <button class="btn-refresh" id="refreshBtn">🔄 Refresh</button>
+        <!-- Files will be injected here by script.js -->
+        <div class="gallery" id="gallery"></div>
+      </div>
+
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

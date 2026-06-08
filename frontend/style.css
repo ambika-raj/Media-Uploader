@@ -1,0 +1,326 @@
+/* ── GOOGLE FONT ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@600&display=swap');
+
+/* ── RESET & BASE ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── CSS VARIABLES (pastel peach/pink palette) ── */
+:root {
+  --bg:           #fdf6f0;        /* warm off-white background */
+  --surface:      #ffffff;        /* card surface */
+  --surface-2:    #fff5f0;        /* slightly peachy surface */
+  --border:       #f5d9cc;        /* soft peach border */
+  --accent:       #e8836a;        /* warm coral/peach accent */
+  --accent-light: #fce8e0;        /* very light peach for hovers */
+  --accent-2:     #d4799a;        /* pink accent for secondary */
+  --text-primary: #3d2c28;        /* deep warm brown for text */
+  --text-muted:   #a88a82;        /* muted warm grey */
+  --success:      #7db57d;        /* soft green */
+  --error:        #e07070;        /* soft red */
+  --shadow:       0 4px 24px rgba(232, 131, 106, 0.12);
+  --shadow-hover: 0 8px 32px rgba(232, 131, 106, 0.22);
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--bg);
+  /* subtle warm dot pattern for depth */
+  background-image: radial-gradient(circle, #f5d9cc 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding: 48px 20px;
+}
+
+/* ── CONTAINER ── */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* ── HEADER ── */
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+  font-size: 0.95rem;
+}
+
+/* ── UPLOAD CARD ── */
+.upload-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 44px;
+  box-shadow: var(--shadow);
+}
+
+/* ── DRAG & DROP ZONE ── */
+.drop-zone {
+  border: 2px dashed var(--border);
+  border-radius: 14px;
+  padding: 44px 20px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--surface-2);
+  transition: border-color 0.3s, background 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.drop-zone.dragover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.drop-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 2px 6px rgba(232,131,106,0.25));
+}
+
+.drop-zone p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.drop-zone span {
+  color: #c9a49a;
+  font-size: 0.85rem;
+}
+
+/* ── BROWSE BUTTON ── */
+.btn-browse {
+  margin-top: 6px;
+  padding: 9px 22px;
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-browse:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── SELECTED FILE NAME ── */
+.selected-file {
+  font-size: 0.85rem;
+  color: var(--accent-2);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* ── UPLOAD BUTTON ── */
+.btn-upload {
+  width: 100%;
+  margin-top: 22px;
+  padding: 13px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(232, 131, 106, 0.35);
+}
+
+.btn-upload:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(232, 131, 106, 0.45);
+}
+
+.btn-upload:disabled {
+  background: #e8ccc4;
+  color: #b89990;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-wrap {
+  margin-top: 18px;
+  background: var(--accent-light);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 28px;
+  border: 1px solid var(--border);
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 10px;
+  text-align: center;
+  line-height: 28px;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: 600;
+  transition: width 0.3s ease;
+}
+
+/* ── STATUS MESSAGE ── */
+.status-msg {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.9rem;
+  min-height: 20px;
+  font-weight: 500;
+}
+
+.status-msg.success { color: var(--success); }
+.status-msg.error   { color: var(--error); }
+
+/* ── GALLERY SECTION ── */
+.gallery-section h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+.btn-refresh {
+  margin-bottom: 20px;
+  padding: 7px 18px;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: "DM Sans", sans-serif;
+  transition: all 0.2s;
+}
+
+.btn-refresh:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* ── GALLERY GRID ── */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+/* ── FILE CARD ── */
+.file-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
+  box-shadow: var(--shadow);
+}
+
+.file-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover);
+}
+
+.file-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.file-icon {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: var(--surface-2);
+}
+
+.file-card-info {
+  padding: 10px 12px;
+}
+
+.file-card-info p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 9px;
+}
+
+/* ── CARD BUTTONS ── */
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-view,
+.btn-delete {
+  flex: 1;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.btn-view {
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+.btn-delete {
+  background: #fce8e8;
+  color: var(--error);
+  border: 1px solid #f5cccc;
+}
+
+.btn-view:hover,
+.btn-delete:hover {
+  opacity: 0.82;
+  transform: scale(0.97);
+}
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 48px;
+  grid-column: 1 / -1;
+  font-size: 0.95rem;
+}
