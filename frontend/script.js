@@ -1,5 +1,5 @@
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://media-uploader-imby.onrender.com";
 
 // ─────────────────────────────────────────────
 // 🎯 Grab all DOM elements we need
